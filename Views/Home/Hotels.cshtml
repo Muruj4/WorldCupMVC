@@ -1,0 +1,49 @@
+﻿@model List<WorldCup.Models.Hotels>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Almarai' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <title>الفنادق</title>
+</head>
+<body dir="rtl">
+    <main>
+        <div class="container text-center">
+            <p class="mt-4"><strong>Welcome To Hotels Page</strong></p>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                @foreach (var hotel in Model)
+                {
+                    <div class="col-md-4 col-lg-3 mb-4">
+                        <div class="card d-flex flex-column h-100">
+                            <img src="/@hotel.Image" class="card-img-top" alt="@hotel.Name">
+                            <div class="card-body text-start">
+                                <h5 class="card-title">@hotel.Name</h5>
+                                <p class="card-text"><strong>Location:</strong> @hotel.Location, @hotel.City</p>
+                                <p class="card-text"><strong>Price:</strong> SAR @hotel.Price</p>
+                                <p class="card-text"><strong>Description:</strong> @hotel.Description</p>
+
+                                <ul class="list-group list-group-flush">
+                                    @foreach (var facility in hotel.Facility)
+                                    {
+                                        <li class="list-group-item">@facility</li>
+                                    }
+                                </ul>
+
+                                <button class="btn btn-primary mt-3 mt-auto">Check Availability</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </main>
+</body>
+</html>

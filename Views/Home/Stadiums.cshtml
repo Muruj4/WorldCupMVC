@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Stadiums>
+
+@{
+    ViewData["Title"] = "Stadiums Page";
+}
+
+<div class="container text-center">
+    <p class="mt-4"><strong>Welcome To Stadiums Page</strong></p>
+    <div class="row justify-content-center">
+        @foreach (var items in Model)
+        {
+            <div class="col-md-4 mt-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <img src="/@items.Image" class="rounded mb-3" style="max-width: 100%; height: auto;" />
+                        <h5 class="mb-3">@items.Name</h5>
+                        <ul class="list-inline">
+                            @foreach (var i in items.Facility)
+                            {
+                                <li class="list-inline-item">
+                                    <small class="text-muted">@i</small>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
