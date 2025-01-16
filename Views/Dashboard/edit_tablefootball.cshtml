@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form asp-action="update_table" method="post">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">اسم الفريق الأول</label>
+                                <input type="text" name="Team1" class="form-control" value="@Model.Team1" />
+                            </div>
+                            <div class="col">
+                                <label class="form-label">اسم الفريق الثاني</label>
+                                <input type="text" name="Team2" class="form-control" value="@Model.Team2" />
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <label class="form-label">وقت المباراة</label>
+                                <input type="datetime-local" name="MatchTime" class="form-control" value="@Model.MatchTime.ToString("yyyy-MM-ddTHH:mm")" />
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col text-center">
+                                <button type="submit" class="btn btn-primary">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

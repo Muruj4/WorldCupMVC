@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TransportationCategories>
+@{
+	Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+<div class="container">
+	<div class=" row mt-5">
+		<div class="col">
+			<div class=" card mt-5">
+				<div class=" card-body ">
+					<form asp-action="CreateNewTransportationCategories" method="post">
+						<div class=" row">
+							<div class=" col">
+								<label class="form-label">اسم فئة النقل</label>
+								<input type="text" name="Name" />
+							</div>
+						</div>
+						<div class=" row">
+							<div class=" col">
+								<button class=" btn btn-primary">حفظ</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div> 
+	</div>
+	<div id="categoriescontainer">
+		@Html.Partial("partial/categorypartial",Model)
+	</div>
+</div>

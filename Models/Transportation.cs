@@ -9,8 +9,7 @@ namespace WorldCup.Models
         public int Id { get; set; }
         public int Capacity { get; set; }
 
-        [ForeignKey("TransportationCategories")]
-        public TransportationCategories vehicle { get; set; }
+        public int vehicle { get; set; }
         public string Color { get; set; }
         public string Image { get; set; }
         public string Name { get; set; }

@@ -1,0 +1,148 @@
+﻿@model IEnumerable<Categories>
+
+@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+   
+}
+<div class="modal" tabindex="-1" id="del">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> تأكيد الحذف</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>هل انت متأكد من رغبتك بحذف السجل</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغاء الحذف</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="confirmdelete2()"> حذف</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class=" row mt-5">
+        <div class=" col">
+            <div class=" card mt-5">
+                <div class="card-body ">
+                    <form asp-action="CreateNewCategories" method="post">
+                        <div class=" row">
+                            <div class=" col">
+                                <label class=" form-label">اسم الفئة</label>
+                                <input type="text" name="Name" class="form-control"  />
+                                <span class=" text-danger" asp-validation-for="@Model.First().Name"></span> @* // عشان مايخليه فاضي  ورسالة المودل تنعرض   *@                 
+                            </div>
+                            <div class=" col">
+                                <label class=" form-label">وصف الفئة</label>
+                                <input type="text" name="Description" class="form-control"  />
+                                <span class=" text-danger" asp-validation-for="@Model.First().Description"></span>
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class=" col">
+                                <label class=" form-label">الايقونة</label>
+                                <input type="text" name="Icon" class="form-control"  />
+                                <span class=" text-danger" asp-validation-for="@Model.First().Icon"></span>
+                            </div>
+                            <div class=" col">
+                                <label class=" form-label">الرابط</label>
+                                <input type="text" name="Url" class="form-control"  />
+                                <span class=" text-danger" asp-validation-for="@Model.First().Url"></span>
+                            </div>
+                        </div>
+                        <div class=" row mt-3">
+                            <div class=" col text-center">
+                                <button type="submit" class=" btn btn-primary">حفظ</button>
+                            </div>
+                        </div>
+                        <div class=" row mt-3">
+                            <div class=" col">
+                                <h1 class=" alert alert-secondary">@TempData["save"]</h1>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" row mt-5">
+<div class=" col">
+    <div class="card">
+        <div class=" card-body">
+            <table class=" table text-center">
+                <thead>
+                    <tt class=" text-center">
+                                <td>رقم الفئة</td>
+                                <td>اسم الفئة</td>
+                                <td>الوصف</td>
+                        <td>الايقونة</td>
+                        <td>الرابط</td>
+                                <td class=" text-center" colspan="2">اجراء</td>
+                    </tt>
+                </thead>
+                <tbody>
+                    @if(Model!=null){
+                                @foreach (var i in Model)
+                                {
+                                    <tr>
+                                        <td>@i.Id</td>
+                                        <td>@i.Name</td>
+                                        <td>@i.Description</td>
+                                        <td>@i.Icon</td>
+                                        <td>@i.Url</td>
+
+                                        <td>
+
+                                            <a onclick="showmessage(@i.Id)"><i class=" fa fa-trash text-danger" aria-hidden="true"></i></a>
+
+                                        </td>
+                                        <td>
+                                            <a asp-action="edit_categories" asp-route-id="@i.Id"> <i class=" fa fa-pencil text-success" aria-hidden="true"></i></a>
+
+                                        </td>
+                                    </tr>
+                                }
+                    }
+                 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    </div>
+    <div class=" row">
+        <div class=" col">
+            <div class=" card mt-5">
+                <div class="card-body">
+                    <form asp-action="Categories">
+                        <label class=" form-label">
+                            بحث-تصفية
+
+                        </label>
+                        <input type="text" class=" form-control" name="name" asp-action="index" />
+                        <div class="row mt-3">
+                            <div class=" col text-center ">
+                                <button type ="submit" class=" btn btn-primary">بحث</button>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class=" col text-center ">
+                                <a asp-action="Categories" >ازالة التصفية</a>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    
+</div>
+            </div>
+        </div>
+    </div>
+   
+
+</div>
+
+
+
+                                @*  ضروري يكون فيه ديليت كريت ابديت ريد *@

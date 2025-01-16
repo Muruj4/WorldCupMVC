@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Transportation>
+
+@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+    var getdata = ViewBag.getdata1;
+    var getdatatransport = ViewBag.getdata;
+}
+<div class=" container">
+    <div class=" row mt-5">
+        <div class=" col">
+            <div class=" card mt-5">
+                <div class="card-body ">
+                    <form asp-action="CreateNewTransport" method="post" enctype="multipart/form-data">
+                        <div class=" row">
+                            <div class=" col">
+                                <label class=" form-label">السعه</label>
+                                <input type="text" name="Capacity" class="form-control" />
+                            </div>
+                            <div class=" col">
+                                <label class=" form-label">فئة النقل</label>
+                                <select class=" form-select" name="vehicle">
+                                    <option>اختر فئة النقل</option>
+                                    @foreach (var item in getdata)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                   }
+                               </select>
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class=" col">
+                                <label class=" form-label">اسم السياره</label>
+                                <input type="text" name="Name" class="form-control" />
+                            </div>
+                            <div class=" col">
+                                <label class=" form-label">اللون</label>
+                                <input type="text" name="Color" class="form-control" />
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class=" col">
+                                <label class=" form-label">الصورة</label>
+                                <input type="file" name="photo" class="form-control" />
+                            </div>
+                            <div class=" col">
+                                <label class=" form-label">موديل السياره</label>
+                                <input type="text" name="Model" class="form-control" />
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class=" col">
+                                <label class=" form-label">نسخة السياره</label>
+                                <input type="text" name="ModelVersion" class="form-control" />
+                            </div>
+                            <div class=" col">
+                                <label class=" form-label">الممشى</label>
+                                <input type="text" name="Km" class="form-control" />
+                            </div>
+
+                        </div>
+                        <div class=" row mt-3">
+                            <div class=" col text-center">
+                                <button type="submit" class=" btn btn-primary">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" row mt-5">
+        <div class=" col">
+            <div class="card">
+                <div class=" card-body">
+                    <table class=" table text-center">
+                        <thead>
+                            <tt class="text-center">
+                                <td>رقم السياره</td>
+                                <td>اسم السياره</td>
+                                <td>لون السياره</td>
+                                <td>فئة السياره</td>
+                                <td>صورة السياره</td>
+                                <td>موديل السياره</td>
+                                <td>الممشى </td>
+                                <td>السعة</td>
+                                <
+                            </tt>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in getdatatransport)
+                            {
+                                <tr>
+                                    <td>@i.Id</td>
+                                    <td>@i.NameCar</td>
+                                    <td>@i.color</td>
+                                    <td>@i.NameCategory</td>
+                                    
+                                    <td><img src="/images/@i.image" width="60" height="60" class="rounded rounded-circle" /></td>
+                                    <td>@i.model</td>
+                                    <td>@i.Km</td>
+                                    <td>@i.capacity</td>
+                                   
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

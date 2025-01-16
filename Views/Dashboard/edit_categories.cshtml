@@ -1,0 +1,46 @@
+﻿
+
+    @model Categories
+     @{
+        Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+     }
+   
+
+<div class ="container">
+    <div class=" row mt-5">
+        <div class=" col">
+            <div class=" card mt-5">
+                <div class="card-body ">
+                    <form asp-action="update_categories" method="post">
+                        <div class=" row">
+                            <input type="hidden" asp-for="Id" class="form-control" />
+                            <div class=" col">
+                                <label class=" form-label">اسم الفئة</label>
+                                <input type="text" asp-for="Name" class="form-control" />
+                            </div>
+                            <div class=" col">
+                                <label class=" form-label">وصف الفئة</label>
+                                <input type="text" asp-for="Description" class="form-control" />
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class=" col">
+                                <label class=" form-label">الايقونة</label>
+                                <input type="text" asp-for="Icon" class="form-control" />
+                            </div>
+                            <div class=" col">
+                                <label class=" form-label">الرابط</label>
+                                <input type="text" asp-for="Url" class="form-control" />
+                            </div>
+                        </div>
+                        <div class=" row mt-3">
+                            <div class=" col text-center">
+                                <button type="submit" class=" btn btn-primary">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
